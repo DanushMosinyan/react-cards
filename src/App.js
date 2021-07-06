@@ -1,9 +1,10 @@
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
+import Layout from "./components/Layout";
 import { useState } from "react";
 
 function App() {
-  const [tasks, setTasks] = useState([ ]);
+  const [tasks, setTasks] = useState([]);
 
   const addTask = () => {
     const newTasks = [...tasks];
@@ -15,9 +16,8 @@ function App() {
   };
 
   const sortTasks = () => {
-    const newTasks = [...tasks].sort((a, b) => {
-      return a.number - b.number;
-    });
+    const newTasks = [...tasks];
+    newTasks.sort((a, b) => a.number - b.number);
     setTasks(newTasks);
   };
 
@@ -34,14 +34,7 @@ function App() {
   return (
     <div className="main">
       <Header onAdd={addTask} onSort={sortTasks} />
-      <div className="body">
-        <div className="container">
-          <div className="taskContainer">
-            <Tasks tasks={tasks} onDelete={deleteTask} />
-          </div>
-        </div>
-        <div>Instructions</div>
-      </div>
+      <Layout tasks={tasks} deleteTask={deleteTask} />
     </div>
   );
 }
