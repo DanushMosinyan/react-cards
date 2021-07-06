@@ -17,7 +17,8 @@
   overflow: auto;
   height: 12cm;
   min-height: 5cm;
-  border: 1px solid steelblue;
+  background-color: blanchedalmond;
+  border: 2px solid black;
   border-radius: 5px;
 }
 

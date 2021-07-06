@@ -3,20 +3,10 @@ import Tasks from "./components/Tasks";
 import { useState } from "react";
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      number: 54,
-    },
-    {
-      number: 44,
-    },
-    {
-      number: 4,
-    },
-  ]);
+  const [tasks, setTasks] = useState([ ]);
 
   const addTask = () => {
-    let newTasks = [...tasks];
+    const newTasks = [...tasks];
     const item = {
       number: parseInt(Math.random() * 100),
     };
@@ -25,15 +15,20 @@ function App() {
   };
 
   const sortTasks = () => {
-    let newTasks = [...tasks];
-    newTasks = newTasks.sort((a, b) => {
+    const newTasks = [...tasks].sort((a, b) => {
       return a.number - b.number;
     });
     setTasks(newTasks);
   };
 
   const deleteTask = (taskToDelete) => {
-    setTasks(tasks.filter((task) => task !== taskToDelete));
+    const newTasks = [...tasks];
+    const index = newTasks.indexOf(taskToDelete);
+    if (index > -1) {
+      newTasks.splice(index, 1);
+    }
+
+    setTasks(newTasks);
   };
 
   return (
@@ -45,7 +40,7 @@ function App() {
             <Tasks tasks={tasks} onDelete={deleteTask} />
           </div>
         </div>
-        <div>instructions</div>
+        <div>Instructions</div>
       </div>
     </div>
   );
