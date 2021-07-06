@@ -3,7 +3,7 @@ import "./tasks.css"
 
 const Tasks = ({ tasks, onDelete }) => {
   return (
-    <div id ="tasks">
+    <div className ="tasks">
       {tasks.map((task) => (
         <Task key={task.id} task={task} onDelete={onDelete} />
       ))}
