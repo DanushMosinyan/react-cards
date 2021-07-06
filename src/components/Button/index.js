@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import './button.css';
 
 const Button = ({ color, text, onClick }) => {
   return (
@@ -14,12 +14,6 @@ const Button = ({ color, text, onClick }) => {
 
 Button.defaultProps = {
   color: "steelblue",
-};
-
-Button.propTypes = {
-  text: PropTypes.string.isRequired,
-  color: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default Button;

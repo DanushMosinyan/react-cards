@@ -1,10 +1,9 @@
-import PropTypes from "prop-types";
-import Button from "./Button";
+import Button from "../Button";
+import "./header.css";
 
 const Header = ({ title, onSort, onAdd }) => {
-
   return (
-    <div>
+    <div className = "head">
       <header className="header">
         <h1>{title}</h1>
         <div className="Buttons">
@@ -18,10 +17,6 @@ const Header = ({ title, onSort, onAdd }) => {
 
 Header.defaultProps = {
   title: "Task Viewer",
-};
-
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
 };
 
 export default Header;

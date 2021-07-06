@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import Task from "./Task";
+import Task from "../Task";
+import "./tasks.css"
 
 const Tasks = ({ tasks, onDelete }) => {
   return (
@@ -10,7 +10,5 @@ const Tasks = ({ tasks, onDelete }) => {
     </div>
   );
 };
-
-Tasks.propTypes = {}; //ToDo
 
 export default Tasks;

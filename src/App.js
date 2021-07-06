@@ -5,70 +5,48 @@ import { useState } from "react";
 function App() {
   const [tasks, setTasks] = useState([
     {
-      id: 1,
-      text: "Doctors Appointment",
       number: 54,
-      reminder: true,
     },
     {
-      id: 2,
-      text: "Meeting at Scool",
       number: 44,
-      reminder: true,
     },
     {
-      id: 3,
-      text: "FoodShopping",
       number: 4,
-      reminder: false,
     },
   ]);
 
-  const AddTask = () => {
-    var item = {
-      text: "",
+  const addTask = () => {
+    let newTasks = [...tasks];
+    const item = {
       number: parseInt(Math.random() * 100),
-      reminder: false,
     };
-    if (tasks.length == 0) {
-      item.id = 0;
-    } else item.id = tasks[tasks?.length - 1].id + 1;
-    tasks.push(item);
-    var newTasks = JSON.parse(JSON.stringify(tasks));
+    newTasks.push(item);
     setTasks(newTasks);
   };
 
   const sortTasks = () => {
-    var newTasks = JSON.parse(
-      JSON.stringify(
-        tasks.sort(function (a, b) {
-          return a.number - b.number;
-        })
-      )
-    );
-    for (let index = 0; index < newTasks.length; index++) {
-      const element = newTasks[index];
-      element.id = index;
-    }
+    let newTasks = [...tasks];
+    newTasks = newTasks.sort((a, b) => {
+      return a.number - b.number;
+    });
     setTasks(newTasks);
   };
 
-  const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+  const deleteTask = (taskToDelete) => {
+    setTasks(tasks.filter((task) => task !== taskToDelete));
   };
 
   return (
-    <div className="body">
-      <div className="container" scrollbar>
-        <Header onAdd={AddTask} onSort={sortTasks} />
-        <div className="taskContainer">
-          <Tasks tasks={tasks} onDelete={deleteTask} />
+    <div className="main">
+      <Header onAdd={addTask} onSort={sortTasks} />
+      <div className="body">
+        <div className="container">
+          <div className="taskContainer">
+            <Tasks tasks={tasks} onDelete={deleteTask} />
+          </div>
         </div>
-        <footer>
-          footer
-        </footer>
+        <div>instructions</div>
       </div>
-      <div>instructions</div>
     </div>
   );
 }
