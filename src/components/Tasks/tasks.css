@@ -1,0 +1,6 @@
+.tasks {
+  margin: 5px;
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
